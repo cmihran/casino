@@ -1,5 +1,5 @@
 public class Deck {
-	String[] labels = { 
+	public String[] labels = { 
 			"2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack",
 			"Queen", "King", "Ace"
 	};
@@ -17,7 +17,7 @@ public class Deck {
 	public final static int LABEL_KING = 11;
 	public final static int LABEL_ACE = 12;
 	
-	String[] suits = {
+	public String[] suits = {
 			"Club", "Diamond", "Heart", "Spade" 
 	};
 	
