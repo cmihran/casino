@@ -12,10 +12,18 @@ public class Card {
 		avail = true;
 	}
 	
+	public Card(int x){
+		if(x != -1) throw new IllegalArgumentsException();
+		value = 0;
+		label = Deck.labels[0];
+		suit = Deck.suit[0];
+		avail = false;
+	}
+	
 	public boolean isLegal(int value, String label, String suit){
 		boolean retval = false;
 		//check value
-		if(value < 0 || value > 11) retval = false;
+		if(value < 0 || value > 11) return false;
 		//check label
 		for(int i = 0; i < Deck.labels.length; i++){
 			if(Deck.labels[i].equals(label)) retval = true;
