@@ -16,7 +16,7 @@ public class Card {
 		if(value < 0 || value > 11) retval = false;
 		//check label
 		for(int i = 0; i < Deck.labels.length; i++){
-			if(Deck.lebals[i].equals(label)) retval = true;
+			if(Deck.labels[i].equals(label)) retval = true;
 		}
 		//check suit
 		for(int i = 0; i < Deck.suits.length; i++){
