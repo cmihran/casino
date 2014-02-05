@@ -2,12 +2,14 @@ public class Card {
 	int value;
 	String label;
 	String suit;
+	boolean avail;
 	
 	public Card(int value, String label, String suit){
 		if(!isLegal(value, label suit)) throw new IllegalArgumentsException();
 		this.value = value;
 		this.label = label;
 		this.suit = suit;
+		avail = true;
 	}
 	
 	public boolean isLegal(int value, String label, String suit){
@@ -23,6 +25,10 @@ public class Card {
 			if(Deck.suits[i].equals(label)) retval = true;
 		}
 		return retval;
+	}
+	
+	public boolean getAvail(){
+		return avail;
 	}
 	
 	public int getValue(){
