@@ -73,4 +73,23 @@ public class Deck {
 		//TO-DO
 	}
 	
+	public void printDeck(){
+		//Clubs
+		for(int i = 0; i < Clubs.length; i++){
+			Clubs[i].printCard();
+		}
+		//Diamonds
+		for(int i = 0; i < Diamonds.length; i++){
+			Diamonds[i].printCard();
+		}
+		//Hearts
+		for(int i = 0; i < Hearts.length; i++){
+			Hearts[i].printCard();
+		}
+		//Spades
+		for(int i = 0; i < Spades.length; i++){
+			Spades[i].printCard();
+		}
+	}
+	
 }
