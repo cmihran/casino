@@ -52,7 +52,7 @@ public class Blackjack {
 			usersCards.add(card[randomGenNumber]);
 
 		}
-
+		
 		/*
 		 * Print Users Two Cards
 		 */
