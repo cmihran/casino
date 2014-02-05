@@ -85,8 +85,9 @@ public class Deck {
 	}
 	
 	public Card getACard(){
-		int randomSuit = (int) Math.random() * 3;
-		
+		int randomSuit = (int) Math.random() * 4;
+		int randomCard = (int) Math.random() * 13;
+		return deck[randomSuit][randomCard];
 	}
 	
 	public void printDeck(){
