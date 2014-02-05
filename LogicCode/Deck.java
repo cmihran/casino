@@ -85,9 +85,15 @@ public class Deck {
 	}
 	
 	public Card getACard(){
-		int randomSuit = (int) Math.random() * 4;
-		int randomCard = (int) Math.random() * 13;
-		return deck[randomSuit][randomCard];
+		Card retval = new Card(-1);
+		
+		while(retval.getAvail() == true){
+			int randomSuit = (int) Math.random() * 4;
+			int randomCard = (int) Math.random() * 13;
+			retval = deck[randomSuit][randomCard];
+		}
+		
+		return retval;
 	}
 	
 	public void printDeck(){
