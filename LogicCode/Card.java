@@ -5,7 +5,7 @@ public class Card {
 	boolean avail;
 	
 	public Card(int value, String label, String suit){
-		if(!isLegal(value, label suit)) throw new IllegalArgumentsException();
+		if(!isLegal(value, label, suit)) throw new IllegalArgumentException();
 		this.value = value;
 		this.label = label;
 		this.suit = suit;
@@ -13,10 +13,10 @@ public class Card {
 	}
 	
 	public Card(int x){
-		if(x != -1) throw new IllegalArgumentsException();
+		if(x != -1) throw new IllegalArgumentException();
 		value = 0;
 		label = Deck.labels[0];
-		suit = Deck.suit[0];
+		suit = Deck.suits[0];
 		avail = false;
 	}
 	
@@ -37,6 +37,10 @@ public class Card {
 	
 	public boolean getAvail(){
 		return avail;
+	}
+	
+	public void setAvail(boolean avail){
+		this.avail = avail;
 	}
 	
 	public int getValue(){
