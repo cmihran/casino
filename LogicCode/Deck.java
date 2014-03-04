@@ -50,16 +50,16 @@ public class Deck {
 		int randomCard = 0 + (int) (Math.random() * 13);
 		Card retval = deck[randomSuit][randomCard];
 		
-		while(retval.getAvail() == true){
+		while(retval.getAvail() == false){
 			randomSuit = 0 + (int) (Math.random() * 4);
 			randomCard = 0 + (int) (Math.random() * 13);
 			retval = deck[randomSuit][randomCard];
 			if(retval.getAvail() == true) {
 				deck[randomSuit][randomCard].setAvail(false);
-				cardsLeft--;
 				break;
 			}
 		}
+		cardsLeft--;
 		return retval;
 	}
 	
@@ -74,5 +74,5 @@ public class Deck {
 			}	
 		}
 	}
-	
+
 }
