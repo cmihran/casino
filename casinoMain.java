@@ -3,11 +3,11 @@ import javax.swing.*;
 
 public class casinoMain {
 	final static Color bg = new Color(0, 102, 0);
-	static JFrame f = new JFrame();
-	final static int width = 800;
-	final static int height = 700;
-	static casinoStart casStart = new casinoStart(width, height);
-	static casinoBlackjack casBJ = new casinoBlackjack(width, height);
+	private static JFrame f = new JFrame();
+	private final static int width = 800;
+	private final static int height = 700;
+	private static casinoStart casStart = new casinoStart(width, height);
+	private static casinoBlackjack casBJ = new casinoBlackjack(width, height);
 	
 	public final static int bWidth = 100;
 	public final static int bHeight = 36;
