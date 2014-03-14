@@ -1,4 +1,4 @@
-Division of Labor
+Division of Labor (edit this and put in what you're working on)
 ======
 Charlie: Putting blackjack logic into UI
 
