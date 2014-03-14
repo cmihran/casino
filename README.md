@@ -1,3 +1,13 @@
+Division of Labor
+======
+Charlie: Putting blackjack logic into UI
+
+Jeffrey: 
+
+Kevin: 
+
+Eric: 
+
 casino
 ======
 Project space for our APCS project
