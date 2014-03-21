@@ -4,7 +4,7 @@ Division of Labor
 
 Charlie: Putting blackjack logic into UI
 
-Jeffrey: 
+Jeffrey: Refining small aspects of Blackjack logic, beginning to make other card games
 
 Kevin: 
 
