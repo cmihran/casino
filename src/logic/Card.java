@@ -1,7 +1,10 @@
+package logic;
+
 public class Card {
 	int value;
 	String label;
 	String suit;
+	String photoName;
 	boolean avail;
 
 	public Card(int value, String label, String suit) {
@@ -11,6 +14,7 @@ public class Card {
 		this.label = label;
 		this.suit = suit;
 		avail = true;
+		photoName = label + suit + ".png";
 	}
 
 	public Card(int x) {
@@ -44,6 +48,10 @@ public class Card {
 		return avail;
 	}
 
+	public String getPhotoName(){
+		return photoName;
+	}
+	
 	public void setAvail(boolean avail) {
 		this.avail = avail;
 	}
