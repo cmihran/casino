@@ -6,6 +6,7 @@ public class Card {
 	String suit;
 	String photoName;
 	boolean avail;
+	boolean isAce = false;
 
 	public Card(int value, String label, String suit) {
 		if (!isLegal(value, label, suit))
@@ -15,8 +16,15 @@ public class Card {
 		this.suit = suit;
 		avail = true;
 		photoName = label + suit + ".png";
+		
+		if (value == 11)
+			isAce = true;
 	}
-
+	
+	public boolean isAce(){
+		return isAce;
+	}
+	
 	public Card(int x) {
 		if (x != -1)
 			throw new IllegalArgumentException();
@@ -48,10 +56,10 @@ public class Card {
 		return avail;
 	}
 
-	public String getPhotoName(){
+	public String getPhotoName() {
 		return photoName;
 	}
-	
+
 	public void setAvail(boolean avail) {
 		this.avail = avail;
 	}
