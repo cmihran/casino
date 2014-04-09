@@ -4,8 +4,8 @@ import javax.swing.*;
 public class casinoMain {
 	final static Color bg = new Color(0, 102, 0);
 	private static JFrame f = new JFrame();
-	private final static int width = 800;
-	private final static int height = 700;
+	public final static int width = 800;
+	public final static int height = 700;
 	private static casinoStart casStart = new casinoStart(width, height);
 	private static casinoBlackjack casBJ = new casinoBlackjack(width, height);
 	
