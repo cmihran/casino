@@ -1,5 +1,7 @@
+package frame;
 import java.awt.Color;
-import javax.swing.*;
+
+import javax.swing.JFrame;
 
 public class casinoMain {
 	final static Color bg = new Color(0, 102, 0);
