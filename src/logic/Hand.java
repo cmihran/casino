@@ -1,3 +1,5 @@
+package logic;
+
 import java.util.ArrayList;
 
 public class Hand extends ArrayList<Card> {
@@ -21,6 +23,18 @@ public class Hand extends ArrayList<Card> {
 			retval += ("[" + this.get(i) + "] ");
 		}
 		return retval;
+	}
+	
+	public boolean isBlackjack(){
+		return(this.size() == 2 && this.getSum() == 21);
+	}
+	
+	public boolean hasAce(){
+		for(int i = 0; i < this.size(); i++){
+			if(this.get(i).isAce())
+				return true;
+		}
+		return false;
 	}
 
 }
