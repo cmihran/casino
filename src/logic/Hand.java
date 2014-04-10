@@ -17,6 +17,7 @@ public class Hand extends ArrayList<Card> {
 		return sum;
 	}
 	
+	@Override
 	public String toString(){
 		String retval = name + "'s Cards: ";
 		for(int i = 0; i < this.size(); i++){
