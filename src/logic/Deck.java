@@ -3,7 +3,7 @@ package logic;
 import java.util.EmptyStackException;
 
 public class Deck {
-	public static String[] labels = { 
+	private static String[] labels = { 
 			"2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack",
 			"Queen", "King", "Ace"
 	};
@@ -21,7 +21,7 @@ public class Deck {
 	public final static int LABEL_KING = 11;
 	public final static int LABEL_ACE = 12;
 	
-	public static String[] suits = {
+	private static String[] suits = {
 			"Clubs", "Diamonds", "Hearts", "Spades" 
 	};
 	
@@ -30,8 +30,8 @@ public class Deck {
 	public final static int SUIT_HEART = 2;
 	public final static int SUIT_SPADE = 3;
 	
-	Card[][] deck = new Card[4][13];
-	public int cardsLeft = 52;
+	private Card[][] deck = new Card[4][13];
+	private int cardsLeft = 52;
 	
 	public Deck() {
 		for(int z = 0; z < deck.length; z++){
