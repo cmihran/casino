@@ -1,3 +1,5 @@
+package frame;
+
 import javax.swing.*;
 
 public interface casinoInterface {
