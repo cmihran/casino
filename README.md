@@ -1,3 +1,9 @@
+casino
+======
+Project space for our APCS project
+
+Project will be a casino simulator with cardgames
+
 Division of Labor
 ======
 (edit this and put in what you're working on)
@@ -9,12 +15,6 @@ Jeffrey: Refining small aspects of Blackjack logic, beginning to make other card
 Kevin: 
 
 Eric: 
-
-casino
-======
-Project space for our APCS project
-
-Project will be a casino simulator with cardgames
 
 Finished
 ======
