@@ -21,6 +21,7 @@ public class casinoBlackjack extends JComponent implements casinoInterface {
 	BackButton buttonBack;
 	StayButton buttonStay;
 	HitButton buttonHit;
+	ngButton buttonNewGame;
 
 	Deck deck;
 	Hand player;
@@ -28,7 +29,7 @@ public class casinoBlackjack extends JComponent implements casinoInterface {
 
 	JLabel txt = new JLabel();
 	JLabel gameStatus = new JLabel();
-
+	
 	public casinoBlackjack(int width, int height) {
 		DISPLAY_WIDTH = width;
 		DISPLAY_HEIGHT = height;
@@ -90,6 +91,12 @@ public class casinoBlackjack extends JComponent implements casinoInterface {
 		gameStatus.setBounds(300, 250, 100, 100);
 		gameStatus.setVisible(false);
 
+		buttonNewGame = new ngButton();
+		buttonNewGame.setBounds(300,250,100,36);
+		buttonNewGame.setEnabled(false);
+		add(buttonNewGame);
+		buttonNewGame.setVisible(true);
+		
 		// finish buttonBack.setBounds(0, 0, casinoMain.bWidth,
 		// casinoMain.bHeight);
 		add(buttonBack);
@@ -109,6 +116,7 @@ public class casinoBlackjack extends JComponent implements casinoInterface {
 
 		buttonStay.setEnabled(false);
 		buttonHit.setEnabled(false);
+		buttonNewGame.setEnabled(true);
 	}
 
 	public void lose() {
@@ -117,14 +125,15 @@ public class casinoBlackjack extends JComponent implements casinoInterface {
 
 		buttonStay.setEnabled(false);
 		buttonHit.setEnabled(false);
+		buttonNewGame.setEnabled(true);
 	}
 
 	public void checkStatus() {
-		if(dealer.hasAce() && dealer.getSum() < 21)
+		//if(dealer.hasAce() && dealer.getSum() < 21)
 		
 		if(player.getSum() > 21) 
 			lose();
-		else if (player.isBlackjack())
+		else if (player.isBlackjack() || player.getSum() == 21)
 			win();
 		else if (dealer.getSum() > 16 && player.getSum() > dealer.getSum())
 			win();
@@ -143,13 +152,25 @@ public class casinoBlackjack extends JComponent implements casinoInterface {
 		}
 
 		public void actionPerformed(ActionEvent arg0) {
+			casinoMain.modeStart();
 			resetGame();
+		}
+	}
+	
+	private class ngButton extends JButton implements ActionListener {
+		ngButton() {
+			super("New Game");
+			addActionListener(this);
+		}
+
+		public void actionPerformed(ActionEvent arg0) {
+			resetGame();
+			//buttonNewGame.setEnabled(false);
 		}
 	}
 
 	public void resetGame() {
 		newCards();
-		casinoMain.modeStart();
 		gameStatus.setVisible(false);
 		buttonHit.setEnabled(true);
 		buttonStay.setEnabled(true);
