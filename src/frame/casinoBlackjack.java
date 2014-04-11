@@ -165,7 +165,7 @@ public class casinoBlackjack extends JComponent implements casinoInterface {
 
 		public void actionPerformed(ActionEvent arg0) {
 			resetGame();
-			//buttonNewGame.setEnabled(false);
+			buttonNewGame.setEnabled(false);
 		}
 	}
 
