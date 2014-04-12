@@ -20,6 +20,7 @@ public class casinoMain {
 		f.setLayout(null);
 		f.add(casStart);
 		f.add(casBJ);
+		f.setResizable(false);
 		casBJ.setVisible(false);
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		f.setTitle("Casino Alpha 1");

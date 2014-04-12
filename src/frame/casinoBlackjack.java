@@ -5,18 +5,19 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 
 import logic.Deck;
 import logic.Hand;
-import logic.Card;
 
+@SuppressWarnings("serial")
 public class casinoBlackjack extends JComponent implements casinoInterface {
-	final int DISPLAY_WIDTH;
-	final int DISPLAY_HEIGHT;
-	final int buttonOffset = 10;
+	private final int DISPLAY_WIDTH;
+	private final int DISPLAY_HEIGHT;
+	private final int offsetSide = 10;
 
 	BackButton buttonBack;
 	StayButton buttonStay;
@@ -27,9 +28,17 @@ public class casinoBlackjack extends JComponent implements casinoInterface {
 	Hand player;
 	Hand dealer;
 
+	ImageIcon playerImg;
+	ImageIcon dealerImg;
+	JLabel playerImgLabel;
+	JLabel dealerImgLabel;
+
+	JLabel pLbl = new JLabel("Your Cards:");
+	JLabel dLbl = new JLabel("Dealer's Cards:");
+	
 	JLabel txt = new JLabel();
 	JLabel gameStatus = new JLabel();
-	
+
 	public casinoBlackjack(int width, int height) {
 		DISPLAY_WIDTH = width;
 		DISPLAY_HEIGHT = height;
@@ -61,28 +70,48 @@ public class casinoBlackjack extends JComponent implements casinoInterface {
 		Font font = new Font("Arial", Font.PLAIN, 20);
 		setSize(DISPLAY_WIDTH, DISPLAY_HEIGHT);
 
+		newCards();
+		updateImages();
+
+		pLbl.setFont(font);
+		pLbl.setForeground(Color.WHITE);
+		add(pLbl);
+		pLbl.setBounds(casinoMain.width/2 - 200, 150, 150, 100);
+		pLbl.setVisible(true);
+		
+		dLbl.setFont(font);
+		dLbl.setForeground(Color.WHITE);
+		add(dLbl);
+		dLbl.setBounds(casinoMain.width/2 - 200, 0, 150, 100);
+		dLbl.setVisible(true);
+		
+		
 		buttonBack = new BackButton();
 		System.out.println(casinoMain.height + " " + casinoMain.bHeight);
-		buttonBack.setBounds(0 + buttonOffset,
-				(casinoMain.height - 2 * casinoMain.bHeight) - buttonOffset,
+		buttonBack.setBounds(0 + offsetSide,
+				(casinoMain.height - 2 * casinoMain.bHeight) - offsetSide,
 				casinoMain.bWidth, casinoMain.bHeight);
 		add(buttonBack);
 		buttonBack.setVisible(true);
 
 		buttonHit = new HitButton();
-		buttonHit.setBounds(100, 250, 100, 36);
+		buttonHit.setBounds(this.getWidth() / 2 - casinoMain.bWidth,
+				(casinoMain.height - 3 * casinoMain.bHeight) - offsetSide,
+				casinoMain.bWidth, casinoMain.bHeight);
 		add(buttonHit);
 		buttonHit.setVisible(true);
 
 		buttonStay = new StayButton();
-		buttonStay.setBounds(200, 250, 100, 36);
+		buttonStay.setBounds(this.getWidth() / 2,
+				(casinoMain.height - 3 * casinoMain.bHeight) - offsetSide,
+				casinoMain.bWidth, casinoMain.bHeight);
 		add(buttonStay);
 		buttonStay.setVisible(true);
 
 		txt.setFont(font);
 		txt.setForeground(Color.WHITE);
 		add(txt);
-		txt.setBounds(50, 50, 500, 200);
+		txt.setBounds(50, 400, 500, 200);
 		txt.setVisible(true);
 
 		gameStatus.setFont(font);
@@ -92,22 +121,45 @@ public class casinoBlackjack extends JComponent implements casinoInterface {
 		gameStatus.setVisible(false);
 
 		buttonNewGame = new ngButton();
-		buttonNewGame.setBounds(300,250,100,36);
+		buttonNewGame.setBounds(this.getWidth() / 2 - casinoMain.bWidth / 2,
+				(casinoMain.height - 2 * casinoMain.bHeight) - offsetSide,
+				casinoMain.bWidth, casinoMain.bHeight);
 		buttonNewGame.setEnabled(false);
 		add(buttonNewGame);
 		buttonNewGame.setVisible(true);
-		
+
 		// finish buttonBack.setBounds(0, 0, casinoMain.bWidth,
 		// casinoMain.bHeight);
 		add(buttonBack);
 		buttonBack.setVisible(true);
+	}
 
-		newCards();
-
-		Hand test = new Hand("test");
-		test.add(new Card(10,"Jack", "Hearts"));
-		test.add(new Card(11,"Ace", "Hearts"));
-		System.out.println(test.isBlackjack() + " test");
+	public void updateImages() {
+		try {
+			playerImg = new ImageIcon(player.toImage());
+			dealerImg = new ImageIcon(dealer.toImage());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		playerImgLabel = new JLabel(playerImg);
+		playerImgLabel.setBounds(
+				casinoMain.width/2 - 200,
+				100 + offsetSide + 110, 
+				playerImg.getIconWidth(),
+				playerImg.getIconHeight());
+		add(playerImgLabel);
+		playerImgLabel.setVisible(true);
+		
+		dealerImgLabel = new JLabel(dealerImg);
+		dealerImgLabel.setBounds(
+				casinoMain.width/2 - 200,
+				0 + offsetSide + 70, 
+				dealerImg.getIconWidth(),
+				dealerImg.getIconHeight());
+		add(dealerImgLabel);
+		dealerImgLabel.setVisible(true);
+		
+		repaint();
 	}
 
 	public void win() {
@@ -129,9 +181,9 @@ public class casinoBlackjack extends JComponent implements casinoInterface {
 	}
 
 	public void checkStatus() {
-		//if(dealer.hasAce() && dealer.getSum() < 21)
-		
-		if(player.getSum() > 21) 
+		// if(dealer.hasAce() && dealer.getSum() < 21)
+
+		if (player.getSum() > 21)
 			lose();
 		else if (player.isBlackjack() || player.getSum() == 21)
 			win();
@@ -145,6 +197,13 @@ public class casinoBlackjack extends JComponent implements casinoInterface {
 		}
 	}
 
+	public void stay() {
+		if (player.getSum() > dealer.getSum())
+			win();
+		else
+			lose();
+	}
+
 	private class BackButton extends JButton implements ActionListener {
 		BackButton() {
 			super("Back");
@@ -156,7 +215,7 @@ public class casinoBlackjack extends JComponent implements casinoInterface {
 			resetGame();
 		}
 	}
-	
+
 	private class ngButton extends JButton implements ActionListener {
 		ngButton() {
 			super("New Game");
@@ -165,12 +224,14 @@ public class casinoBlackjack extends JComponent implements casinoInterface {
 
 		public void actionPerformed(ActionEvent arg0) {
 			resetGame();
-			buttonNewGame.setEnabled(false);
+			// buttonNewGame.setEnabled(false);
 		}
 	}
 
 	public void resetGame() {
 		newCards();
+		cleanImages();
+		updateImages();
 		gameStatus.setVisible(false);
 		buttonHit.setEnabled(true);
 		buttonStay.setEnabled(true);
@@ -187,8 +248,7 @@ public class casinoBlackjack extends JComponent implements casinoInterface {
 			if (dealer.getSum() <= 16) {
 				dealer.add(deck.getACard());
 			}
-			updateText();
-			checkStatus();
+			buttonPress();
 		}
 	}
 
@@ -203,9 +263,22 @@ public class casinoBlackjack extends JComponent implements casinoInterface {
 				dealer.add(deck.getACard());
 			}
 			buttonHit.setEnabled(false);
-			updateText();
-			checkStatus();
+			buttonPress();
+			stay();
 		}
+	}
+	
+	public void buttonPress(){
+		updateText();
+		cleanImages();
+		updateImages();
+		checkStatus();
+	}
+
+	private void cleanImages() {
+		remove(playerImgLabel);
+		remove(dealerImgLabel);
+		
 	}
 
 }

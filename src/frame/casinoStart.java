@@ -10,6 +10,7 @@ import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+@SuppressWarnings("serial")
 public class casinoStart extends JComponent implements casinoInterface {
 	// coordinate values
 	final int DISPLAY_WIDTH;
@@ -53,7 +54,7 @@ public class casinoStart extends JComponent implements casinoInterface {
 		add(dropdownMode);
 		dropdownMode.setVisible(true);
 
-		/*
+		
 		// Game Logo
 		ImageIcon titleIcon = new ImageIcon(titleURL);
 		JLabel titleLabel = new JLabel(titleIcon);
@@ -64,7 +65,6 @@ public class casinoStart extends JComponent implements casinoInterface {
 				titleIcon.getIconHeight());
 		add(titleLabel);
 		titleLabel.setVisible(true);
-		*/
 		
 		repaint();
 

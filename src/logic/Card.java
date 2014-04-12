@@ -1,5 +1,6 @@
 package logic;
 
+
 public class Card {
 	int value;
 	String label;
@@ -16,7 +17,6 @@ public class Card {
 		this.suit = suit;
 		avail = true;
 		photoName = label + suit + ".png";
-		
 		if (value == 11)
 			isAce = true;
 	}
