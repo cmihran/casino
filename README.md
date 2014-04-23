@@ -29,7 +29,7 @@ To-Do
   - Go Fish
   - Big 2 (probably hard)
   - and more
-- Betting system
+- Wagering system
   - Saved over all games
   - Saved when closing
   - Used as high score
