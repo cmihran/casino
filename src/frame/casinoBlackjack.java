@@ -111,13 +111,13 @@ public class casinoBlackjack extends JComponent implements casinoInterface {
 		txt.setFont(font);
 		txt.setForeground(Color.WHITE);
 		add(txt);
-		txt.setBounds(50, 400, 500, 200);
+		txt.setBounds(100, 325, 500, 200);
 		txt.setVisible(true);
 
 		gameStatus.setFont(font);
 		gameStatus.setForeground(Color.WHITE);
 		add(gameStatus);
-		gameStatus.setBounds(300, 250, 100, 100);
+		gameStatus.setBounds(casinoMain.width/2 - 200, 475, 100, 100);
 		gameStatus.setVisible(false);
 
 		buttonNewGame = new ngButton();
